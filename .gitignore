@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+*.log
+*.csv
+*.parquet
+*.sqlite
+*.db
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# VSCode & IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Airbyte & Airflow runtime
+airbyte/logs/
+airbyte/data/
+airflow/logs/
+airflow/airflow.db
+airflow/webserver_config.py
+
+# DBT
+dbt_project/target/
+dbt_project/dbt_modules/
+dbt_project/.dbt/
+
+# Streamlit
+.streamlit/
+*.streamlit-cache/
+
+# OS
+.DS_Store
+Thumbs.db

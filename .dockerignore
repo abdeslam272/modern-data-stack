@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.log
+
+# Virtualenv
+env/
+venv/
+.venv/
+
+# Jupyter notebooks (si tu en ajoutes plus tard)
+.ipynb_checkpoints/
+
+# Airbyte & Airflow runtime
+airbyte/logs/
+airbyte/data/
+airflow/logs/
+airflow/dags/__pycache__/
+
+# DBT
+dbt_project/target/
+dbt_project/dbt_modules/
+dbt_project/.dbt/
+
+# Streamlit cache
+.streamlit/
+*.streamlit-cache/
+
+# Docker stuff
+Dockerfile
+docker-compose.override.yml
+
+# Misc
+*.zip
+*.tar.gz
+*.sqlite3
+*.db
