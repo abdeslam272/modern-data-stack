@@ -1,5 +1,5 @@
 services:
-  postgres:
+  postgres: # Base de donnée postgres Principal
     image: postgres:15
     container_name: postgres_mds
     restart: always
@@ -15,6 +15,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
+    restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -25,6 +26,54 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
+   # la base INTERNE de Airbyte pour stocker ses connexions, ses jobs, ses configurations.
+  airbyte-db:  
+    image: postgres:13
+    container_name: airbyte-db
+    restart: always
+    environment:
+      POSTGRES_DB: airbyte
+      POSTGRES_USER: airbyte
+      POSTGRES_PASSWORD: airbyte
+    volumes:
+      - airbyte_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # ATTENTION ici pour éviter le conflit avec ton postgres_mds !
+
+  # airbyte-server est le cerveau d'Airbyte : il gère les APIs REST, les tâches, la communication avec le worker
+  airbyte-server:
+    image: airbyte/server:0.50.48
+    container_name: airbyte-server
+    restart: always
+    environment:
+      - AIRBYTE_ROLE=primary
+      - AIRBYTE_WORKSPACE_ROOT=/tmp/airbyte_local/workspace
+      - AIRBYTE_DB_USER=airbyte
+      - AIRBYTE_DB_PASSWORD=airbyte
+      - AIRBYTE_DB_HOST=airbyte-db
+      - AIRBYTE_DB_PORT=5432
+      - AIRBYTE_DB_DB=airbyte
+      - DATABASE_USER=airbyte       
+      - DATABASE_PASSWORD=airbyte   
+    depends_on:
+      - airbyte-db
+    volumes:
+      - airbyte_workspace:/tmp/airbyte_local/workspace
+    ports:
+      - "8001:8001"
+
+  # airbyte-webapp est l’interface graphique
+  airbyte-webapp:
+    image: airbyte/webapp:0.50.48
+    container_name: airbyte-webapp
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - airbyte-server
+
 volumes:
   postgres_data:
   pgadmin_data:
+  airbyte_db_data:
+  airbyte_workspace:
