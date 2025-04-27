@@ -20,3 +20,10 @@ Variables d'environnement | Rendre une application configurable dynamiquement
 Volumes Docker | Séparer la donnée du cycle de vie du container
 Ports exposés | Permettre à l'extérieur d'accéder à des services internes
 Dépendances entre services | Démarrer dans le bon ordre pour éviter des erreurs de connexion
+
+
+Élément | Explication
+Airbyte utilise Temporal | Airbyte se base sur un moteur de workflow distribué appelé Temporal.
+airbyte-temporal est un service | Quand tu déploies Airbyte, il faut aussi démarrer un conteneur qui s’appelle airbyte-temporal.
+DNS Docker interne | Quand tu fais docker-compose up, les conteneurs communiquent par nom (par ex airbyte-db, airbyte-server, airbyte-temporal).
+Si le service manque... | Si airbyte-temporal n’existe pas ou n’est pas lancé, Airbyte-server ne trouve pas son "partenaire" et plante.
