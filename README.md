@@ -27,3 +27,10 @@ Airbyte utilise Temporal | Airbyte se base sur un moteur de workflow distribué 
 airbyte-temporal est un service | Quand tu déploies Airbyte, il faut aussi démarrer un conteneur qui s’appelle airbyte-temporal.
 DNS Docker interne | Quand tu fais docker-compose up, les conteneurs communiquent par nom (par ex airbyte-db, airbyte-server, airbyte-temporal).
 Si le service manque... | Si airbyte-temporal n’existe pas ou n’est pas lancé, Airbyte-server ne trouve pas son "partenaire" et plante.
+
+
+https://github.com/nialloriordan/airbyte-airflow-scraper/blob/master/docker-compose.airbyte.yaml
+
+https://github.com/Ashwini9030/airbytedocs/blob/master/docker-compose.yaml
+
+
