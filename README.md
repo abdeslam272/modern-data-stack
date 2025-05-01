@@ -34,3 +34,14 @@ https://github.com/nialloriordan/airbyte-airflow-scraper/blob/master/docker-comp
 https://github.com/Ashwini9030/airbytedocs/blob/master/docker-compose.yaml
 
 
+| Service                         | Rôle principal |
+|----------------------------------|----------------|
+| `init`                           | Initialise les volumes/config au démarrage |
+| `bootloader`                     | Applique les migrations de base de données |
+| `db`                             | Base de données PostgreSQL pour Airbyte |
+| `worker`                         | Exécute les synchronisations de données |
+| `server`                         | API centrale d’Airbyte (backend) |
+| `webapp`                         | Interface utilisateur web |
+| `airbyte-temporal`              | Orchestrateur de workflows (Temporal) |
+| `airbyte-cron`                  | Planifie les tâches régulières |
+| `airbyte-connector-builder-server` | Outil pour construire des connecteurs personnalisés |
