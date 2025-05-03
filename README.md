@@ -45,3 +45,12 @@ https://github.com/Ashwini9030/airbytedocs/blob/master/docker-compose.yaml
 | `airbyte-temporal`              | Orchestrateur de workflows (Temporal) |
 | `airbyte-cron`                  | Planifie les tâches régulières |
 | `airbyte-connector-builder-server` | Outil pour construire des connecteurs personnalisés |
+
+
+| Action                                                    | Pourquoi c’est nécessaire                                                         |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ✅ Créer des dossiers comme `/tmp/airbyte_local/workspace` | Airbyte a besoin de stocker des fichiers (logs, configs, state…) sur le disque.   |
+| 🔐 Définir les bons droits (`chmod`, `chown`)             | Certains conteneurs (comme `worker`) peuvent échouer s'ils ne peuvent pas écrire. |
+| 🏗️ Vérifier que certains volumes sont montés             | Pour s'assurer que le reste du système fonctionnera sans surprise.                |
+| 🧪 Lancer des checks de dépendance (DB, Temporal)         | Pour éviter que le système ne crashe plus tard de manière silencieuse.            |
+
