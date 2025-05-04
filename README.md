@@ -60,4 +60,5 @@ https://github.com/Ashwini9030/airbytedocs/blob/master/docker-compose.yaml
 | Entrypoint                  | Tu peux exécuter des commandes shell même sans bash | Utilise `/bin/sh -c` dans l’entrypoint Docker Compose |
 | Images minimalistes         | Certaines images ne contiennent que l’essentiel     | Adapter tes scripts et outils à l’environnement léger |
 
-
+à partir de cette discussion: https://github.com/airbytehq/airbyte/discussions/40599
+je peux dire que il y a pas un support entre docker et airbyte et maintenant les projets sont plus lancer avec le kubernets donc je vois pas trop l'utilité de continuer ce projet dans le but est d'apprendre
