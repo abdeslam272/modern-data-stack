@@ -54,3 +54,10 @@ https://github.com/Ashwini9030/airbytedocs/blob/master/docker-compose.yaml
 | 🏗️ Vérifier que certains volumes sont montés             | Pour s'assurer que le reste du système fonctionnera sans surprise.                |
 | 🧪 Lancer des checks de dépendance (DB, Temporal)         | Pour éviter que le système ne crashe plus tard de manière silencieuse.            |
 
+| Élément                     | Ce que tu apprends 🧠                               | Ce qu’il faut faire ✅                                 |
+| --------------------------- | --------------------------------------------------- | ----------------------------------------------------- |
+| `env: can't execute 'bash'` | Certains containers n'ont **que `sh`, pas `bash`**  | Remplace `#!/bin/bash` par `#!/bin/sh`                |
+| Entrypoint                  | Tu peux exécuter des commandes shell même sans bash | Utilise `/bin/sh -c` dans l’entrypoint Docker Compose |
+| Images minimalistes         | Certaines images ne contiennent que l’essentiel     | Adapter tes scripts et outils à l’environnement léger |
+
+
